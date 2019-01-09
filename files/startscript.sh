@@ -1,4 +1,4 @@
 #!/bin/bash
-echo 'VERSION 0.0.1'
+echo 'VERSION 0.0.2'
 cd bubble-sort-service
-forever start index.js
+node index.js
