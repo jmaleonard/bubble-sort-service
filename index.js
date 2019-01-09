@@ -21,4 +21,4 @@ app.post('/bubblesort', (req, res) => {
   res.status(200).send(sortedArray);
 });
 
-app.listen(port, () => console.log('Bubble sort is up and running'))
+app.listen(port);
