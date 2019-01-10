@@ -1,5 +1,6 @@
 'use strict';
 const _ = require('lodash');
+const ArrayBoundLimitError = require('./src/errors').ArrayBoundsLimit
 
 function comparator(a, b) {
   return a - b;
@@ -15,6 +16,10 @@ module.exports = function (arr, cmp) {
   cmp = cmp || comparator;
   var temp;
   arr = _.chain(arr).flattenDeep().compact().value()
+  if(arr.length > 10000){
+      throw new ArrayBoundLimitError('ArrayBoundLimitError');
+  } // assignment states "Arrays of 10 000 elements" I am going to assume you meant more?
+
   for (var i = 0, l = arr.length; i < l; i++) {
     for (var j = i; j > 0; j--) {
       if (cmp(arr[j], arr[j - 1]) < 0) {
