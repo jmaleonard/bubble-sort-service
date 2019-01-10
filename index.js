@@ -8,6 +8,7 @@ const port = process.env.BUBBLE_SORT_PORT || 8000
 
 app.post('/bubblesort', (req, res) => {
   let array;
+  console.log('process.env.BUBBLE_SORT_ARRAY', process.env.BUBBLE_SORT_ARRAY)
   if (process.env.BUBBLE_SORT_ARRAY) {
     array = process.env.BUBBLE_SORT_ARRAY;
     let sortedArray = bubbleSort(array);

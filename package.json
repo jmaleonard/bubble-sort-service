@@ -8,7 +8,8 @@
     "build-docker": "docker build . -t bubble-sort-service",
     "clean-build-docker": "docker build . -t bubble-sort-service --no-cache",
     "docker-run": "docker run -p 8000:8000 -d bubble-sort-service",
-    "docker-run-local": "docker run -e BUBBLE_SORT_ARRAY='[6, 2, [4, 3],[[[5], null], 1]]' bubble-sort-service"
+    "docker-run-local": "docker run -e BUBBLE_SORT_ARRAY='[6, 2, [4, 3],[[[5], null], 1]]' bubble-sort-service",
+    "stop-all-containers": "docker ps -a -q  --filter ancestor=bubble-sort-service"
   },
   "author": "jmaleonard",
   "license": "ISC",
