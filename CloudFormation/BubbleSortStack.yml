@@ -59,7 +59,7 @@ EC2InstanceBubbleSort:
               #!/bin/bash -xe
               apt update -y
               apt install -y docker.io
-              docker pull dalaorg/docker-geth-parity:latest
-              docker run -p 8000:8000 -d bubble-sort-service
+              docker pull jmaleonard/bubble-sort-service
+              docker run -p 8000:8000 -d jmaleonard/bubble-sort-service
               rm /var/lib/cloud/instances/*/sem/config_scripts_user
 

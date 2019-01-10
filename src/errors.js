@@ -1,4 +1,4 @@
-class ArrayBoundsLimit extends Error {
+class ArrayBoundsLimitError extends Error {
   constructor(message) {
     super(message);
     this.name = 'ArrayBoundsLimit';
@@ -6,5 +6,5 @@ class ArrayBoundsLimit extends Error {
 }
 
 module.exports = {
-  ArrayBoundsLimit
+  ArrayBoundsLimitError
 }
