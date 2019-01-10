@@ -51,7 +51,7 @@ $ curl -X POST \
   -H 'Content-Type: application/json' \
   -d '{"unsortedArray":[6, 2, [4, 3],[[[5], null], 1],6, 2, [4, 3],[[[5], null], 1],6, 2, [4, 3],[[[5], null], 1],6, 2, [4, 3],[[[5], null], 1]]}'
 ```
-Your respone will be a sorted array
+Your response will be a sorted array
 
 To start the process locally and provide an array to sort edit the package.json file and simply run.
 
