@@ -4,7 +4,7 @@
   "description": "You ever get tired of writing your own sorting function? Well so did I. So why rewrite what we do best. ",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "build-docker": "docker build . -t bubble-sort-service",
     "clean-build-docker": "docker build . -t bubble-sort-service --no-cache",
     "docker-run": "docker run -p 8000:8000 -d bubble-sort-service",
