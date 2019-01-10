@@ -4,6 +4,12 @@ const bubbleSort = require('../bubblesort');
 const _ = require('lodash');
 const ArrayBoundsLimitError = require('../src/errors').ArrayBoundsLimitError;
 
+beforeAll(() => {
+  //configure this to push our tests?
+  process.env.MAX_AMOUNT_OF_ITEMS_PER_ARRAY = 100000
+
+});
+
 let getArrayWithNumberOfElements = (N) => {
   let array = [];
   function getRandomInt() {
@@ -34,3 +40,12 @@ test('Test Error is Thrown', () => {
   let unsortedArray = getArrayWithNumberOfElements(1000000);
   expect(() => bubbleSort(unsortedArray)).toThrow(ArrayBoundsLimitError)
 })
+
+
+// DO NOT WANNA RUN THIS ON TRAVIS CI
+// test('see if we can push the limits', () => {
+//   let unsortedArray = getArrayWithNumberOfElements(10000);
+//   let sorted = bubbleSort(unsortedArray);
+//   expect(sorted).toEqual(_.sortBy(unsortedArray))
+// })
+

@@ -1,7 +1,7 @@
 'use strict';
 const _ = require('lodash');
 const ArrayBoundLimitError = require('./src/errors').ArrayBoundsLimitError
-const MAX_AMOUNT_OF_ITEMS_PER_ARRAY = process.env.MAX_AMOUNT_OF_ITEMS_PER_ARRAY || 10000
+const MAX_AMOUNT_OF_ITEMS_PER_ARRAY = process.env.MAX_AMOUNT_OF_ITEMS_PER_ARRAY || 100000
 
 function comparator(a, b) {
   return a - b;
