@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jmaleonard/bubble-sort-service.svg?branch=master)](https://travis-ci.org/jmaleonard/bubble-sort-service)
 
-Bubble Sort Service is a service that implements the bubble sort as service. It can be run in various.
+Bubble Sort Service is a service that implements the bubble sort as service. It can be run in various ways.
 
   - Locally by using local installed version of Node
   - Docker Container that exposes a server
