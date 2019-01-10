@@ -10,6 +10,11 @@ app.post('/bubblesort', (req, res) => {
   let array;
   if (process.env.BUBBLE_SORT_ARRAY) {
     array = process.env.BUBBLE_SORT_ARRAY;
+    let sortedArray = bubbleSort(array);
+    console.log('*******SORTED ARRAY**********')
+    console.log(sortedArray);
+    console.log('******* WE ARE DONE CHEERS **********')
+    process.exit(0)
   } else {
     array = req.body.unsortedArray;
   }

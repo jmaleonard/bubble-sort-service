@@ -6,11 +6,13 @@
   "scripts": {
     "test": "jest",
     "build-docker": "docker build . -t bubble-sort-service",
-    "docker-run": "docker run -p 8000:8000 -d bubble-sort-service"
+    "docker-run": "docker run -p 8000:8000 -d bubble-sort-service",
+    "docker-run-local": "docker run -e BUBBLE_SORT_PORT='[6, 2, [4, 3],[[[5], null], 1]]' bubble-sort-service"
   },
   "author": "jmaleonard",
   "license": "ISC",
   "dependencies": {
+    "aws-serverless-express": "^3.3.5",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "lodash": "^4.17.11",

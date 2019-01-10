@@ -1,0 +1,24 @@
+service: bubble-sort-service
+package:
+    include:
+        - src/**
+provider:
+    name: aws
+    stage: ${opt:stage}
+    region: eu-west-1
+    runtime: nodejs6.10
+
+plugins:
+    - serverless-cf-vars
+    
+custom:
+    defaultStage: personal
+    profiles:
+            walaPrimary: 
+                AWS_PROFILE: personal
+                AWS_ACCOUNT_NUMBER: ${ssm:/personal/aws-account-number~true}
+                KEYNAME: bubble-sort-key # THIS IS CREATED IN AWS CONSOLE AND MAKE SURE YOU SAVE IT
+                BUBBLESORT_INSTANCE_TYPE: t2.small
+                
+resources:
+  Resources: ${file(./CloudFormation/BubbleSortStack.yml)}

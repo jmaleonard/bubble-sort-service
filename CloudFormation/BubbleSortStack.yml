@@ -1,0 +1,65 @@
+BubbleSortRole:
+  Type: AWS::IAM::Role
+  Properties:
+    AssumeRolePolicyDocument:
+      Version: '2012-10-17'
+      Statement:
+      - Effect: Allow
+        Principal:
+          Service: 'ec2.amazonaws.com'
+        Action:
+        - sts:AssumeRole
+    Path: "/"
+    Policies:
+    - PolicyName: LogRolePolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - logs:CreateLogGroup
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Resource: 'arn:aws:logs:*:*:*'
+        - Effect: Allow
+          Action:
+          - "cloudformation:Describe*"
+          - "cloudformation:List*"
+          - "cloudformation:Get*"
+          - "cloudformation:PreviewStackUpdate"
+          - "cloudformation:SignalResource"
+          Resource: '*' 
+
+BubbleSortRoleInstaceProfile:
+  Type: AWS::IAM::InstanceProfile
+  Properties:
+    Path: "/"
+    Roles:
+    - Ref: BubbleSortRole
+
+
+EC2InstanceBubbleSort:
+  Type: AWS::EC2::Instance
+  Properties:
+    InstanceType: ${self:custom.profiles.${self:provider.stage}.BUBBLESORT_INSTANCE_TYPE}
+    KeyName: ${self:custom.profiles.${self:provider.stage}.KEYNAME}
+    IamInstanceProfile:
+      Ref: BubbleSortRoleInstaceProfile
+    SourceDestCheck: false
+    ImageId: ami-6d48500b
+    Tags:
+    - Key: Name
+      Value: BubbleSort
+    # This is the huge script to set up all the things we need on the machine
+    UserData:
+      "Fn::Base64":
+        "Fn::Sub":
+          - |
+              #!/bin/bash -xe
+              apt update -y
+              apt install -y docker.io
+              docker pull dalaorg/docker-geth-parity:latest
+              docker run -p 8000:8000 -d bubble-sort-service
+              rm /var/lib/cloud/instances/*/sem/config_scripts_user
+
