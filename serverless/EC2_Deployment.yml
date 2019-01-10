@@ -14,10 +14,10 @@ plugins:
 custom:
     defaultStage: personal
     profiles:
-            walaPrimary: 
+            personal: 
                 AWS_PROFILE: personal
-                AWS_ACCOUNT_NUMBER: ${ssm:/personal/aws-account-number~true}
-                KEYNAME: bubble-sort-key # THIS IS CREATED IN AWS CONSOLE AND MAKE SURE YOU SAVE IT
+                AWS_ACCOUNT_NUMBER: 000000000000 # CHANGE ME
+                KEYNAME: bubble-sort-key # CHANGE ME -  THIS IS CREATED IN AWS CONSOLE AND MAKE SURE YOU SAVE IT
                 BUBBLESORT_INSTANCE_TYPE: t2.small
                 
 resources:
