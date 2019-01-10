@@ -23,32 +23,33 @@ if (process.env.BUBBLE_SORT_ARRAY) {
     console.log(e);
     console.trace(e);
   }
+}
 
-  app.post('/bubblesort', (req, res) => {
-    try {
-      let array;
-      array = req.body.unsortedArray;
-      if (!Array.isArray(array)) {
-        res.status(500).send('Body is not of type array');
-      }
-      let sortedArray = bubbleSort(array);
-      res.status(200).send(sortedArray);
-    } catch (e) {
-      if (e.message === 'ArrayBoundsLimit') {
-        res.status(500).send('Array is greater than 10000');
-      }
+app.post('/bubblesort', (req, res) => {
+  try {
+    let array;
+    array = req.body.unsortedArray;
+    if (!Array.isArray(array)) {
+      res.status(500).send('Body is not of type array');
     }
-  });
-
-  app.listen(port);
-
-  function parseStringToArray(stringArray) {
-    try {
-      return JSON.parse("[" + stringArray + "]");
-    }
-    catch (e) {
-      console.log(e);
-      console.trace(e);
-      throw Error(e);
+    let sortedArray = bubbleSort(array);
+    res.status(200).send(sortedArray);
+  } catch (e) {
+    if (e.message === 'ArrayBoundsLimit') {
+      res.status(500).send('Array is greater than 10000');
     }
   }
+});
+
+app.listen(port);
+
+function parseStringToArray(stringArray) {
+  try {
+    return JSON.parse("[" + stringArray + "]");
+  }
+  catch (e) {
+    console.log(e);
+    console.trace(e);
+    throw Error(e);
+  }
+}
